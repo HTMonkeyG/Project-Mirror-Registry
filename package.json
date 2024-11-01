@@ -1,6 +1,6 @@
 {
   "name": "project-mirror-registry",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A NodeJS package produces template data of MCBE NBT.",
   "main": "main.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/HTMonkeyG/Mirror-Registry.git"
+    "url": "git+https://github.com/HTMonkeyG/Project-Mirror-Registry.git"
   },
   "keywords": [
     "mcbe",
@@ -20,9 +20,9 @@
   "author": "HTMonkeyG",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/HTMonkeyG/Mirror-Registry/issues"
+    "url": "https://github.com/HTMonkeyG/Project-Mirror-Registry/issues"
   },
-  "homepage": "https://github.com/HTMonkeyG/Mirror-Registry#readme",
+  "homepage": "https://github.com/HTMonkeyG/Project-Project-Registry#readme",
   "dependencies": {
     "parsenbt-js": "^2.2.2"
   }

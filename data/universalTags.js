@@ -80,13 +80,63 @@ producer.mobSpawner = function () {
   //NBT复合标签/JSON对象：下一次生成。
   //NBT复合标签/JSON对象Properties：属性组件。
   //字符串TypeId：实体的命名空间ID。
-  //整型Weight
+  //result["i32>Weight
 
   return result
 };
 
 producer.entity = function () {
+  var result = NBT.create();
 
+  result["str>identifier"] = "";
+  result["list>definitions"] = ["str"];
+  result["i64>UniqueID"] = 0n;
+  result["list>Pos"] = ["f32", 0, 0, 0];
+  result["list>Rotation"] = ["f32", 0, 0];
+  result["list>Motion"] = ["f32", 0, 0, 0];
+  result["i8>CustomNameVisible"] = 0;
+  result["i32>LastDimensionId"] = 0;
+  result["f32>FallDistance"] = 0;
+  result["i16>Fire"] = 0;
+  result["i8>OnGround"] = 0;
+  result["i8>Invulnerable"] = 0;
+  result["i32>PortalCooldown"] = 0;
+  result["i8>IsGlobal"] = 0;
+  result["i8>IsAutonomous"] = 0;
+  result["comp>LinksTag"] = NBT.create();
+  result["comp>LinksTag"]["i64>entityID"] = 0n;
+  result["comp>LinksTag"]["i32>LinkID"] = 0;
+  result["i8>LootDropped"] = 0;
+  result["i8>Color"] = 0;
+  result["i8>Color2"] = 0;
+  result["i32>Strength"] = 0;
+  result["i32>StrengthMax"] = 0;
+  result["i8>Sheared"] = 0;
+  result["i8>IsIllagerCaptain"] = 0;
+  result["i64>OwnerNew"] = -1n;
+  result["i8>Sitting"] = 0;
+  result["i8>IsBaby"] = 0;
+  result["i8>IsTamed"] = 0;
+  result["i8>IsTrusting"] = 0;
+  result["i8>IsOrphaned"] = 0;
+  result["i8>IsAngry"] = 0;
+  result["i8>IsOutOfControl"] = 0;
+  result["i32>Variant"] = 0;
+  result["i32>MarkVariant"] = 0;
+  result["i8>Saddled"] = 0;
+  result["i8>Chested"] = 0;
+  result["i8>ShowBottom"] = 0;
+  result["i8>IsGliding"] = 0;
+  result["i8>IsSwimming"] = 0;
+  result["i8>IsEating"] = 0;
+  result["i8>IsScared"] = 0;
+  result["i8>IsStunned"] = 0;
+  result["i8>IsRoaring"] = 0;
+  result["i32>SkinID"] = 0;
+  result["i8>Persistent"] = 0;
+  result["list>Tags"] = ["str"];
+
+  return result;
 };
 
 producer.block = function (name, states, version) {
@@ -116,6 +166,7 @@ producer.itemListElement = function (slot, item) {
   var result = NBT.create();
 
   result["i8>Slot"] = slot || 0;
+  Object.assign(result, item);
 
   return result
 };

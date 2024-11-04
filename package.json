@@ -1,6 +1,6 @@
 {
   "name": "project-mirror-registry",
-  "version": "0.0.4",
+  "version": "1.0.0",
   "description": "A NodeJS package produces template data of MCBE NBT.",
   "main": "main.js",
   "scripts": {

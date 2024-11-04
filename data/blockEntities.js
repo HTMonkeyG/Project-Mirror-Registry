@@ -8,13 +8,13 @@ function create(id, x, y, z, isMovable, name) {
 }
 
 /**
- * Create a block entity template with given block type.
- * @param {String} type 
- * @returns 
+ * Create a block entity template with given block id.
+ * @param {String} type - Type of the block
+ * @returns {Object|null}
  */
 exports.createBlockEntity = function (type) {
   if (typeof type != "string")
-    throw new TypeError(`Failed to execute 'createBlockEntity': The type name must be a string. Recieved ${typeof type}.`);
+    throw new TypeError(`Failed to execute 'createBlockEntity': Type name must be a string. Recieved ${typeof type}.`);
 
   if (type.indexOf("minecraft:") == 0)
     type = type.slice(10);
@@ -22,7 +22,7 @@ exports.createBlockEntity = function (type) {
   if (producer[type])
     return producer[type](type);
 
-  throw new Error(`Failed to execute 'createBlockEntity': The type name provided ('${type}') is not a valid block entity name.`);
+  return null
 }
 
 producer.wall_banner = function () {

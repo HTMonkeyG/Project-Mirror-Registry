@@ -119,7 +119,7 @@ producer.shield = function () {
 producer.firework_rocket = function () {
   var result = createUniversalTag("item");
 
-  result["comp>Fireworks"] = NBT.create();
+  result["comp>Fireworks"] = NBT.create(true);
   result["comp>Fireworks"]["list>Explosions"] = ["comp"];
   result["i8>Flight"] = 0;
 
@@ -129,7 +129,7 @@ producer.firework_rocket = function () {
 producer.firework_star = function () {
   var result = createUniversalTag("item");
 
-  result["comp>FireworksItem"] = NBT.create();
+  result["comp>FireworksItem"] = NBT.create(true);
   result["i32>customColor"] = 0;
 
   return result
@@ -198,7 +198,7 @@ producer.potion = function () {
 producer.turtle_helmet = function () {
   var result = createUniversalTag("item");
 
-  result["comp>Trim"] = NBT.create();
+  result["comp>Trim"] = NBT.create(true);
   result["comp>Trim"]["str>Material"] = "";
   result["comp>Trim"]["str>Pattern"] = "";
 

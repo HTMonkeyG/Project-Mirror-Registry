@@ -18,7 +18,7 @@ exports.createUniversalTag = function (type, ...args) {
 };
 
 producer.bannerPattern = function (pattern, color) {
-  var result = NBT.create();
+  var result = NBT.create(true);
 
   result["str>Pattern"] = pattern || "";
   result["i32>Color"] = color || 0;
@@ -27,17 +27,17 @@ producer.bannerPattern = function (pattern, color) {
 };
 
 producer.block = function (name, states, version) {
-  var result = NBT.create();
+  var result = NBT.create(true);
 
   result["str>name"] = name || "minecraft:air";
-  result["comp>states"] = states || NBT.create();
+  result["comp>states"] = states || NBT.create(true);
   result["i32>version"] = version || 1;
 
   return result
 };
 
 producer.blockEntity = function (id, x, y, z, isMovable, name) {
-  var result = NBT.create();
+  var result = NBT.create(true);
 
   result["str>id"] = id || "";
   result["i32>x"] = x || 0;
@@ -50,7 +50,7 @@ producer.blockEntity = function (id, x, y, z, isMovable, name) {
 };
 
 producer.bookPage = function (text) {
-  var result = NBT.create();
+  var result = NBT.create(true);
 
   result["str>text"] = text || "";
   result["str>photoname"] = "";
@@ -59,7 +59,7 @@ producer.bookPage = function (text) {
 };
 
 producer.chest = function () {
-  var result = NBT.create();
+  var result = NBT.create(true);
 
   result["i8>forceunpair"] = void 0;
   result["i8>pairlead"] = void 0;
@@ -74,7 +74,7 @@ producer.chest = function () {
 };
 
 producer.commandBlock = function () {
-  var result = NBT.create();
+  var result = NBT.create(true);
 
   result["str>Command"] = "";
   result["i32>Version"] = 36;
@@ -91,7 +91,7 @@ producer.commandBlock = function () {
 };
 
 producer.container = function () {
-  var result = NBT.create();
+  var result = NBT.create(true);
 
   result["list>Items"] = ["comp"];
 
@@ -99,7 +99,7 @@ producer.container = function () {
 };
 
 producer.enchant = function (id, lvl) {
-  var result = NBT.create();
+  var result = NBT.create(true);
 
   result["i16>id"] = id || 0;
   result["i16>lvl"] = lvl || 0;
@@ -108,7 +108,7 @@ producer.enchant = function (id, lvl) {
 };
 
 producer.entity = function () {
-  var result = NBT.create();
+  var result = NBT.create(true);
 
   result["str>identifier"] = "";
   result["list>definitions"] = ["str"];
@@ -125,7 +125,7 @@ producer.entity = function () {
   result["i32>PortalCooldown"] = 0;
   result["i8>IsGlobal"] = 0;
   result["i8>IsAutonomous"] = 0;
-  result["comp>LinksTag"] = NBT.create();
+  result["comp>LinksTag"] = NBT.create(true);
   result["comp>LinksTag"]["i64>entityID"] = 0n;
   result["comp>LinksTag"]["i32>LinkID"] = 0;
   result["i8>LootDropped"] = 0;
@@ -162,7 +162,7 @@ producer.entity = function () {
 };
 
 producer.fireworkExplosion = function () {
-  var result = NBT.create();
+  var result = NBT.create(true);
 
   result["a8>FireworkColor"] = [];
   result["a8>FireworkFade"] = [];
@@ -174,14 +174,14 @@ producer.fireworkExplosion = function () {
 }
 
 producer.item = function (name, lore) {
-  var result = NBT.create();
+  var result = NBT.create(true);
 
   result["i32>Damage"] = 0;
-  result["comp>display"] = NBT.create();
+  result["comp>display"] = NBT.create(true);
   result["comp>display"]["str>Name"] = typeof name != "undefined" ? name : void 0;
   result["comp>display"]["list>Lore"] = ["str"].concat(lore || []);
   result["i32>RepairCost"] = 0;
-  result["comp>minecraft:item_lock"] = NBT.create();
+  result["comp>minecraft:item_lock"] = NBT.create(true);
   // "lock_in_slot" or "lock_in_inventory"
   result["comp>minecraft:item_lock"]["mode"] = "";
   result["i8>minecraft:keep_on_death"] = 0;
@@ -191,7 +191,7 @@ producer.item = function (name, lore) {
 };
 
 producer.itemListElement = function (slot, item) {
-  var result = NBT.create();
+  var result = NBT.create(true);
 
   result["i8>Slot"] = slot || 0;
   Object.assign(result, item);
@@ -200,7 +200,7 @@ producer.itemListElement = function (slot, item) {
 };
 
 producer.itemStack = function (id, count, name, lore) {
-  var result = NBT.create();
+  var result = NBT.create(true);
 
   result["str>Name"] = id || "";
   result["i8>Count"] = count || 0;
@@ -215,7 +215,7 @@ producer.itemStack = function (id, count, name, lore) {
 };
 
 producer.mobSpawner = function () {
-  var result = NBT.create();
+  var result = NBT.create(true);
 
   result["str>EntityIdentifier"] = "";
   result["i16>Delay"] = 0;
@@ -228,7 +228,7 @@ producer.mobSpawner = function () {
   result["f32>DisplayEntityWidth"] = 0;
   result["f32>DisplayEntityHeight"] = 0;
   result["f32>DisplayEntityScale"] = 0;
-  result["comp>SpawnData"] = NBT.create();
+  result["comp>SpawnData"] = NBT.create(true);
   //result["comp>Properties：属性组件。
   //result["str>TypeId：实体的命名空间ID。
   //result["i32>Weight：与其他生成权重相比，该生成被选中的概率。必须为正且至少为1。

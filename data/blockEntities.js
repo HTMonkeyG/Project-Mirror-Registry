@@ -89,7 +89,7 @@ producer.campfire = function () {
 
   for (var i = 1; i < 5; i++) {
     result["i32>ItemTime" + i] = 0;
-    result["comp>Item" + i] = NBT.create();
+    result["comp>Item" + i] = NBT.create(true);
   }
 
   return result

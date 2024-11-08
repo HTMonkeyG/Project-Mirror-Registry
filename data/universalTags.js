@@ -68,7 +68,7 @@ producer.chest = function () {
   result["i8>Findable"] = 0;
   result["str>LootTable"] = "";
   result["i32>LootTableSeed"] = 0;
-  Object.assign(result, producer.container());
+  NBT.assign(result, producer.container());
 
   return result
 };
@@ -194,7 +194,7 @@ producer.itemListElement = function (slot, item) {
   var result = NBT.create(true);
 
   result["i8>Slot"] = slot || 0;
-  Object.assign(result, item);
+  NBT.assign(result, item);
 
   return result
 };

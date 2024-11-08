@@ -158,7 +158,7 @@ producer.writable_book = function () {
 producer.undyed_shulker_box = function () {
   var result = createUniversalTag("item");
 
-  Object.assign(result, universalTags.createUniversalTag("container"));
+  NBT.assign(result, universalTags.createUniversalTag("container"));
 
   return result
 };

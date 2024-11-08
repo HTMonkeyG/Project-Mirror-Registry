@@ -139,7 +139,7 @@ producer.chemistry_table = producer.compound_creator;
 producer.chest = function (type) {
   var result = create(type == "barrel" ? "Barrel" : type == "ender_chest" ? "EnderChest" : "Chest");
 
-  Object.assign(result, universalTags.createUniversalTag("chest"));
+  NBT.assign(result, universalTags.createUniversalTag("chest"));
 
   return result
 };
@@ -166,7 +166,7 @@ producer.command_block = function (type) {
   result["i8>LPRedstoneMode"] = 0;
   result["i32>LPCommandMode"] = type == "chain_command_block" ? 2 : type == "repeating_command_block" ? 1 : 0;
   result["i8>conditionalMode"] = 0;
-  Object.assign(result, universalTags.createUniversalTag("commandBlock"));
+  NBT.assign(result, universalTags.createUniversalTag("commandBlock"));
 
   return result
 };
@@ -292,7 +292,7 @@ producer.lodestone = function () {
 producer.mob_spawner = function () {
   var result = create("MobSpawner");
 
-  Object.assign(result, universalTags.createUniversalTag("mobSpawner"));
+  NBT.assign(result, universalTags.createUniversalTag("mobSpawner"));
 
   return result
 };
@@ -348,7 +348,7 @@ producer.sticky_piston_arm_collision = producer.piston;
 producer.undyed_shulker_box = function () {
   var result = create("ShulkerBox");
 
-  Object.assign(result, universalTags.createUniversalTag("chest"));
+  NBT.assign(result, universalTags.createUniversalTag("chest"));
   result["f32>facing"] = 0;
 
   return result

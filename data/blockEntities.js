@@ -3,7 +3,7 @@ const NBT = require("parsenbt-js")
   , producer = {};
 
 function create(id, x, y, z, isMovable, name) {
-  var result = universalTags.createUniversalTag("blockEntity", id, x, y, z, isMovable, name);
+  var result = universalTags.createUniversalTag("blockEntity", id, x, y, z, name, isMovable);
   return result
 }
 
@@ -185,6 +185,19 @@ producer.conduit = function () {
 
   return result
 };
+
+producer.dispenser = function(type) {
+  var result = create(type == "dispenser" ? "Dispenser" : "Dropper");
+
+  result["list>Items"] = ["comp"];
+  result["i8>isIgnoreShuffle"] = 0;
+  result["i8>isOpened"] = 1;
+  result["str>LootTable"] = "";
+  result["i32>LootTableSeed"] = 0;
+
+  return result
+}
+producer.dropper = producer.dispenser;
 
 producer.enchanting_table = function () {
   var result = create("EnchantTable");
@@ -457,5 +470,3 @@ producer.structure_block = function () {
 
   return result
 };
-
-console.log(Object.keys(producer))

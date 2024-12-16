@@ -1,4 +1,15 @@
-const NBT = require("parsenbt-js");
+const slot = {
+  mainhand: "slot.weapon.mainhand",
+  offhand: "slot.weapon.offhand",
+  head: "slot.armor.head",
+  chest: "slot.armor.chest",
+  legs: "slot.armor.legs",
+  feet: "slot.armor.feet",
+  enderchest: "slot.enderchest",
+  hotbar: "slot.hotbar",
+  inventory: "slot.inventory",
+  container: "slot.container"
+};
 
 /**
  * Replace item in specified slot and returns the old item if successed.
@@ -8,7 +19,7 @@ const NBT = require("parsenbt-js");
  * @param {Number} id - Specifies the inventory slot to be modified. 
  * @param {Object} itemStack - Item to be placed.
  * @param {"destroy"|"keep"} [oldItemHandling] - How to handle the old item. 
- * @returns {Boolean|Object}
+ * @returns {Boolean|Object} Return false if failed, or the old item.
  */
 function replaceItem(type, target, slot, id, itemStack, oldItemHandling) {
   function a(b, c) {
@@ -41,17 +52,18 @@ function replaceItem(type, target, slot, id, itemStack, oldItemHandling) {
         return a("list>PlayerUIItems", id + 1);
       case "slot.inventory":
         return a("list>Inventory", id + 1);
-      case "slot.saddle":
-        return a("list>Inventory", id + 1);
-      case "slot.armor":
-        return a("list>Armor", 2);
-      case "slot.chest":
-      case "slot.equippable":
+      default:
+        return false
     }
   } else if (type == "container") {
     if (slot != "slot.container")
       return false
-
+    return a("list>Items", id + 1);
   } else
     return false
+}
+
+module.exports = {
+  replaceItem: replaceItem,
+  slot: slot
 }

@@ -11,7 +11,7 @@ module.exports = {
   createLevelMeta: levelMeta.createLevelMeta,
   createMap: require("./data/map.js"),
   operations: {
-    commandBlock: require("./operation/commandBlock.js")
+    commandBlock: require("./operation/commandBlock.js"),
+    item: require("./operation/item.js")
   }
 }
-

@@ -1,3 +1,3 @@
 const PMR = require("../main.js");
 
-PMR.operations.commandBlock;
+PMR.operations.item.replaceItem()

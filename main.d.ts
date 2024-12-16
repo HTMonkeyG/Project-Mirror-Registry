@@ -76,6 +76,44 @@ declare namespace PMR {
        * @returns {Object}
        */
       setCommand: (blockEntity: object, command: string) => object;
+    },
+    /** Operation to item and item slot. */
+    item: {
+      /**
+       * Slot list.
+       * 
+       * For "slot" param of replaceItem function.
+       */
+      slot: {
+        mainhand: "slot.weapon.mainhand",
+        offhand: "slot.weapon.offhand",
+        head: "slot.armor.head",
+        chest: "slot.armor.chest",
+        legs: "slot.armor.legs",
+        feet: "slot.armor.feet",
+        enderchest: "slot.enderchest",
+        hotbar: "slot.hotbar",
+        inventory: "slot.inventory",
+        container: "slot.container"
+      };
+      /**
+       * Replace item in specified slot and returns the old item if successed.
+       * @param {"entity"|"container"} type - Type of the target.
+       * @param {Object} target - NBT to be modified. Must be a container or entity.
+       * @param {String} slot - Type of the slot.
+       * @param {Number} id - Specifies the inventory slot to be modified. 
+       * @param {Object} itemStack - Item to be placed.
+       * @param {"destroy"|"keep"} [oldItemHandling] - How to handle the old item. 
+       * @returns {Boolean|Object}
+       */
+      replaceItem: (
+        type: "entity" | "container",
+        target: object,
+        slot: string,
+        id: number,
+        itemStack: object,
+        oldItemHandling: "destroy" | "keep" | undefined
+      ) => boolean;
     }
   };
 }

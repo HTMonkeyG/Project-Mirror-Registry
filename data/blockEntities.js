@@ -7,11 +7,6 @@ function create(id, x, y, z, isMovable, name) {
   return result
 }
 
-/**
- * Create a block entity template with given block id.
- * @param {String} type - Type of the block
- * @returns {Object|null}
- */
 exports.createBlockEntity = function (type) {
   if (typeof type != "string")
     throw new TypeError(`Failed to execute 'createBlockEntity': Type name must be a string. Recieved ${typeof type}.`);
@@ -462,3 +457,5 @@ producer.structure_block = function () {
 
   return result
 };
+
+console.log(Object.keys(producer))

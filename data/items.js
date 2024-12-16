@@ -2,11 +2,6 @@ const NBT = require("parsenbt-js")
   , { createUniversalTag } = require("./universalTags.js")
   , producer = {};
 
-/**
- * Create a item with given id.
- * @param {String} type - Identifier of item 
- * @returns {Object|null}
- */
 exports.createItemTag = function (type) {
   if (typeof type != "string")
     throw new TypeError(`Failed to execute 'createItemTag': Type name must be a string. Recieved ${typeof type}.`);
@@ -17,12 +12,6 @@ exports.createItemTag = function (type) {
   return null
 };
 
-/**
- * Create a stack of item with given id.
- * @param {String} type - Identifier of item 
- * @param {Number|undefined} count - Count of item
- * @returns {Object|null}
- */
 exports.createItemStack = function (type, count) {
   if (typeof type != "string")
     throw new TypeError(`Failed to execute 'createItemStack': Type name must be a string. Recieved ${typeof type}.`);

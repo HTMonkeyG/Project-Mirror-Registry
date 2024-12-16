@@ -1,12 +1,6 @@
 const NBT = require("parsenbt-js")
   , producer = {};
 
-/**
- * Create a template universal tag with specified name.
- * @param {String} type - The name of a universal tag 
- * @param  {...any} args 
- * @returns 
- */
 exports.createUniversalTag = function (type, ...args) {
   if (typeof type != "string")
     throw new TypeError(`Failed to execute 'createUniversalTag': Type name must be a string. Recieved ${typeof type}.`);
@@ -16,6 +10,35 @@ exports.createUniversalTag = function (type, ...args) {
 
   throw new Error(`Failed to execute 'createUniversalTag': Type name provided ('${type}') is not a valid universal tag name.`);
 };
+
+producer.attribute = function () {
+  var result = NBT.create(true);
+
+  result["str>Name"] = "";
+  result["f32>Base"] = 0;
+  result["f32>DefaultMin"] = 0;
+  result["f32>DefaultMax"] = 0;
+  result["f32>Min"] = 0;
+  result["f32>Max"] = 0;
+  result["f32>Current"] = 0;
+  result["list>Modifiers"] = ["comp"];
+  result["list>TemporalBuffs"] = ["comp"];
+
+  return result
+};
+
+producer.attributeModifier = function () {
+  var result = NBT.create(true);
+
+  result["str>Name"] = "";
+  result["f32>Amount"] = 0;
+  result["i32>Operation"] = 0;
+  result["i32>Operand"] = 0;
+  result["i64>UUIDMost"] = 0n;
+  result["i64>UUIDLeast"] = 0n;
+
+  return result
+}
 
 producer.bannerPattern = function (pattern, color) {
   var result = NBT.create(true);
@@ -98,6 +121,22 @@ producer.container = function () {
   return result
 };
 
+producer.effect = function (id, lvl) {
+  var result = NBT.create(true);
+
+  result["i8>Id"] = id || 0;
+  result["i8>Amplifier"] = lvl || 0;
+  result["i32>Duration"] = 0;
+  result["i32>DurationEasy"] = 0;
+  result["i32>DurationNormal"] = 0;
+  result["i32>DurationHard"] = 0;
+  result["i8>Ambient"] = 0;
+  result["i8>ShowParticles"] = 0;
+  result["i8>DisplayOnScreenTextureAnimation"] = 0;
+
+  return result
+}
+
 producer.enchant = function (id, lvl) {
   var result = NBT.create(true);
 
@@ -107,10 +146,10 @@ producer.enchant = function (id, lvl) {
   return result
 };
 
-producer.entity = function () {
+producer.entity = function (id) {
   var result = NBT.create(true);
 
-  result["str>identifier"] = "";
+  result["str>identifier"] = id || "";
   result["list>definitions"] = ["str"];
   result["i64>UniqueID"] = 0n;
   result["list>Pos"] = ["f32", 0, 0, 0];
@@ -210,6 +249,53 @@ producer.itemStack = function (id, count, name, lore) {
   result["comp>tag"] = producer.item(name, lore);
   result["list>CanDestroy"] = ["str"];
   result["list>CanPlaceOn"] = ["str"];
+
+  return result
+};
+
+producer.mob = function (id) {
+  var result = producer.entity(id);
+
+  result["i64>limitedLife"] = 0n;
+  result["i64>LeasherID"] = -1n;
+  result["i32>TradeTier"] = 0;
+  result["i32>TradeExperience"] = 0;
+  result["i8>canPickupItems"] = 1;
+  result["i8>hasSetCanPickupItems"] = 0;
+  result["comp>persistingOffers"] = NBT.create(true);
+  result["i32>persistingRiches"] = 0;
+  result["list>Mainhand"] = [
+    "comp",
+    producer.itemStack("", 0)
+  ];
+  result["list>Offhand"] = [
+    "comp",
+    producer.itemStack("", 0)
+  ];
+  result["list>Armor"] = [
+    "comp",
+    producer.itemStack("", 0),
+    producer.itemStack("", 0),
+    producer.itemStack("", 0),
+    producer.itemStack("", 0)
+  ];
+  result["i16>HurtTime"] = 0;
+  result["i16>DeathTime"] = 0;
+  result["i8>Dead"] = 0;
+  result["i16>AttackTime"] = 0;
+  result["i8>Surface"] = 0;
+  result["i8>NaturalSpawn"] = 0;
+  result["i64>TargetID"] = 0n;
+  result["i8>hasBoundOrigin"] = 0;
+  result["i32>boundX"] = 0;
+  result["i32>boundY"] = 0;
+  result["i32>boundZ"] = 0;
+  result["list>Attributes"] = ["comp"];
+  result["list>ActiveEffects"] = ["comp"];
+  result["f32>BodyRot"] = 0;
+  result["i8>WantsToBeJockey"] = 0;
+  result["i8>IsPregnant"] = 0;
+  result["i64>TargetCaptainID"] = 0n;
 
   return result
 };
